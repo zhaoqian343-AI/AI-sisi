@@ -1,0 +1,222 @@
+:root {
+  --paper: #efe6d6;
+  --ink: #1c1610;
+  --ink-soft: #4a4036;
+  --clay: #c24e1d;
+  --clay-deep: #9a3914;
+  --moss: #2f4a3c;
+  --line: rgba(28, 22, 16, 0.14);
+  --shadow: 0 18px 40px rgba(28, 22, 16, 0.12);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 700px at 88% -10%, rgba(194, 78, 29, 0.18), transparent 55%),
+    radial-gradient(900px 500px at -10% 110%, rgba(47, 74, 60, 0.16), transparent 50%),
+    var(--paper);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, "Songti SC", serif;
+  line-height: 1.5;
+}
+
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  opacity: 0.22;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
+
+.topbar,
+main,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 7vw 0;
+}
+
+.mark {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.85rem;
+}
+
+nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+nav a:hover {
+  border-bottom-color: var(--clay);
+  color: var(--ink);
+}
+
+.hero {
+  min-height: calc(100vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 12vh 7vw 8vh;
+  animation: rise 0.9s ease both;
+}
+
+.kicker {
+  margin: 0 0 1rem;
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+
+h1 {
+  margin: 0;
+  max-width: 14ch;
+  font-size: clamp(2.6rem, 8vw, 6.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+.lede {
+  max-width: 36rem;
+  margin: 1.5rem 0 0;
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.25rem;
+}
+
+.btn {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  text-decoration: none;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0.85rem 1.35rem;
+  border-radius: 999px;
+  transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn.primary {
+  background: var(--clay);
+  color: #fff8f2;
+  box-shadow: var(--shadow);
+}
+
+.btn.primary:hover {
+  background: var(--clay-deep);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.greeting {
+  min-height: 1.5em;
+  margin: 1.25rem 0 0;
+  color: var(--clay-deep);
+  font-style: italic;
+  animation: rise 0.45s ease both;
+}
+
+.about {
+  padding: 8vh 7vw 10vh;
+  border-top: 1px solid var(--line);
+}
+
+h2 {
+  margin: 0 0 2rem;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.5rem;
+  max-width: 54rem;
+}
+
+.points li {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 1rem;
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+}
+
+.points span {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clay);
+  padding-top: 0.35rem;
+}
+
+footer {
+  padding: 0 7vw 2.5rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    justify-content: center;
+    padding-top: 8vh;
+  }
+
+  .points li {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}
